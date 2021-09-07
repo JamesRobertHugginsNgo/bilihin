@@ -25,9 +25,13 @@ const ItemView = Backbone.View.extend({
 			{ name: 'Apple', category: 'Produce' }
 		]
 
-		const names = commonItems.map((item) => item.name).sort();
+		const names = commonItems.map((item) => item.name)
+			.filter((value, index, array) => value && array.indexOf(value) === index)
+			.sort();
+
 		categories = categories.concat(commonItems.map((item) => item.category))
-			.filter((value, index, array) => value && array.indexOf(value) === index).sort();
+			.filter((value, index, array) => value && array.indexOf(value) === index)
+			.sort();
 
 		this.$el.html(`
 			<div class="container">
