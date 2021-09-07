@@ -1,6 +1,6 @@
 const StorageModel = Backbone.Model.extend({
 	fetch() {
-		this.set(this.parse(sessionStorage.getItem(this.id)));
+		this.set(this.parse(localStorage.getItem(this.id)));
 
 		return this;
 	},
@@ -15,16 +15,16 @@ const StorageModel = Backbone.Model.extend({
 		if (this.isNew()) {
 			do {
 				attributes[this.idAttribute] = uuidv4();
-			} while(sessionStorage.getItem(attributes[this.idAttribute]));
+			} while(localStorage.getItem(attributes[this.idAttribute]));
 		}
 
 		const data = Object.assign(attributes, this.toJSON());
 		const id = data[this.idAttribute];
 
 		delete data[this.idAttribute];
-		sessionStorage.setItem(id, JSON.stringify(data));
+		localStorage.setItem(id, JSON.stringify(data));
 
-		const response = sessionStorage.getItem(id);
+		const response = localStorage.getItem(id);
 		response[this.idAttribute] = id;
 		this.set(this.parse(response));
 
@@ -32,7 +32,7 @@ const StorageModel = Backbone.Model.extend({
 	},
 
 	destroy() {
-		sessionStorage.removeItem(this.id);
+		localStorage.removeItem(this.id);
 		this.clear();
 
 		return this;
