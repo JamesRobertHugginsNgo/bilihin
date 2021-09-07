@@ -3,7 +3,7 @@ const ItemCollection = StorageCollection.extend({
 
 	getCategories() {
 		return this.reduce((acc, cur) => {
-			const category = cur.get('category') || 'Other';
+			const category = cur.get('category');
 
 			if (!acc[category]) {
 				acc[category] = { total: 0, checked: 0 }

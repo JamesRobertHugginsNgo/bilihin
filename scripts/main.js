@@ -47,15 +47,17 @@ $(() => {
 			headerView.render({ cancelFragment: `categories/${category}` });
 
 			mainView.remove();
-			mainView = new CategoryView({ collection }).render();
+			mainView = new CategoryView({
+				collection: new ItemCollection(collection.where({ category }))
+			}).on('remove', () => {
+				// TODO
+			}).render({ category });
 			$main.append(mainView.$el);
 
 			document.title = `${category} - Category - Bilihin`;
 		},
 
 		routeItem(item, query) {
-			console.log('ARGUMENTS', arguments);
-			console.log(query);
 			console.log('ROUTE ITEM');
 
 			const cancelFragment = this.parseQuery(query).cancel;

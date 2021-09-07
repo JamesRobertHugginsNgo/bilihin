@@ -2,7 +2,7 @@ const CategoriesView = Backbone.View.extend({
 	className: 'pt-3',
 
 	events: {
-		['click btn-remove']() {
+		['click .btn-remove']() {
 			this.trigger('remove');
 		}
 	},

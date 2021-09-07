@@ -11,6 +11,11 @@ const ItemView = Backbone.View.extend({
 		},
 
 		['click .btn-save']() {
+			const category = this.model.get('category')
+			if (!category) {
+				this.model.set('category', 'Other');
+			}
+
 			this.trigger('save');
 		}
 	},
@@ -25,7 +30,7 @@ const ItemView = Backbone.View.extend({
 
 		this.$el.html(`
 			<div class="container">
-				<h2 class="mb-3">${this.model.isNew ? 'New' : 'Edit'} Item</h2>
+				<h2 class="mb-3">${this.model.isNew() ? 'New' : 'Edit'} Item</h2>
 
 				<div class="row">
 					<div class="col col-sm-6 col-md-4">
