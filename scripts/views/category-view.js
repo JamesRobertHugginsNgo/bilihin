@@ -39,8 +39,7 @@ const CategoryView = Backbone.View.extend({
 												<div class="row">
 													<div class="col-12 col-md-auto">
 														${cur.get('quantity')}
-														-
-														${cur.get('name')}
+														<strong>${cur.get('name')}</strong>
 													</div>
 
 													<div class="col-12 col-md-auto text-muted">
