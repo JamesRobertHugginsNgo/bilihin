@@ -1,0 +1,62 @@
+const CategoryView = Backbone.View.extend({
+	className: 'pt-3',
+
+	render() {
+		this.$el.html(`
+			<div class="container">
+				<div class="mb-3">
+					<a href="#">
+						<i class="bi bi-chevron-left d-none d-sm-inline"></i>
+						Back
+					</a>
+				</div>
+
+				<h2>Category A</h2>
+
+				<div class="row justify-content-between">
+					<div class="col-12 col-md-reset">
+						<ol class="list-group mb-3">
+							<li class="list-group-item">
+								<div class="row">
+									<div class="col-auto text-muted">
+										<input type="checkbox" class="form-check-input">
+									</div>
+
+									<div class="col">
+										<div class="row">
+											<div class="col-12 col-md-auto">
+												Item 001
+											</div>
+
+											<div class="col-12 col-md-auto text-muted">
+												Notes
+											</div>
+										</div>
+									</div>
+
+									<div class="col-auto">
+										<a href="#">
+											<i class="bi bi-pencil d-none d-sm-inline"></i>
+											Edit
+										</a>
+									</div>
+								</div>
+							</li>
+						</ol>
+					</div>
+
+					<div class="col-12 col-md-auto">
+						<div class="mb-3">
+							<button type="button" class="btn btn-danger">
+								<i class="bi bi-x-lg d-none d-sm-inline"></i>
+								Remove Checked
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		`);
+
+		return this;
+	}
+});

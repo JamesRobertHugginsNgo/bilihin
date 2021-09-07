@@ -1,0 +1,11 @@
+@media (min-width: 576px) {
+	.col-sm-reset {
+		flex: 1 0 0%
+	}
+}
+
+@media (min-width: 768px) {
+	.col-md-reset {
+		flex: 1 0 0%
+	}
+}
