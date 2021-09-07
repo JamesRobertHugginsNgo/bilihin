@@ -18,15 +18,15 @@ const StorageModel = Backbone.Model.extend({
 			} while(localStorage.getItem(attributes[this.idAttribute]));
 		}
 
-		const data = Object.assign(attributes, this.toJSON());
+		const data = Object.assign(this.toJSON(), attributes);
 		const id = data[this.idAttribute];
 
 		delete data[this.idAttribute];
 		localStorage.setItem(id, JSON.stringify(data));
 
-		const response = localStorage.getItem(id);
+		const response = this.parse(localStorage.getItem(id));
 		response[this.idAttribute] = id;
-		this.set(this.parse(response));
+		this.set(response);
 
 		return this;
 	},

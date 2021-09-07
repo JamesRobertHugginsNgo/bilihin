@@ -2,6 +2,8 @@ const ItemCollection = StorageCollection.extend({
 	model: ItemModel,
 
 	getCategories() {
+		console.log(this.toJSON());
+
 		return this.reduce((acc, cur) => {
 			const category = cur.get('category');
 

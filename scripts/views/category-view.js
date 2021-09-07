@@ -3,7 +3,8 @@ const CategoryView = Backbone.View.extend({
 
 	events: {
 		['input input[type="checkbox"][data-id]'](event) {
-			console.log(event.currentTarget);
+			const $checkbox = $(event.currentTarget);
+			this.collection.get($checkbox.attr('data-id')).save({ checked: $checkbox.prop('checked') });
 		},
 
 		['click .btn-remove']() {
@@ -31,7 +32,7 @@ const CategoryView = Backbone.View.extend({
 									<li class="list-group-item">
 										<div class="row">
 											<div class="col-auto text-muted">
-												<input type="checkbox" class="form-check-input" data-id="${cur.id}">
+												<input type="checkbox"${cur.get('checked') ? ' checked' : ''} class="form-check-input" data-id="${cur.id}">
 											</div>
 
 											<div class="col">
