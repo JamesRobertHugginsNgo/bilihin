@@ -11,9 +11,20 @@ const ItemView = Backbone.View.extend({
 		},
 
 		['click .btn-save']() {
-			const category = this.model.get('category')
-			if (!category) {
+			if (!this.model.get('quantity')) {
+				this.model.set('quantity', '1');
+			}
+
+			if (!this.model.get('name')) {
+				this.model.set('name', 'Unnamed');
+			}
+
+			if (!this.model.get('category')) {
 				this.model.set('category', 'Other');
+			}
+
+			if (!this.model.get('notes')) {
+				this.model.set('notes', '');
 			}
 
 			this.trigger('save');
